@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Company.Utils
 {
-	public class InvalidTriangleException: Exception
+	public class InvalidRightTriangleException: Exception
 	{
-		public InvalidTriangleException(double a, double b, double c)
+		public InvalidRightTriangleException(double a, double b, double c)
 		{
 			A = a;
 			B = b;

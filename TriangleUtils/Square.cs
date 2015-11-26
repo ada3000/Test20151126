@@ -9,25 +9,34 @@ namespace Company.Utils
 	public static class Square
 	{	
 		/// <summary>
-		/// Calculate triangle square by 3 sides
+		/// Расчет площади прямоуголного треугольника
 		/// </summary>
-		/// <param name="a">triangle side A</param>
-		/// <param name="b">triangle side B</param>
-		/// <param name="c">triangle side C</param>
+		/// <param name="a">Сторона A</param>
+		/// <param name="b">Сторона B</param>
+		/// <param name="c">Сторона C</param>
 		/// <returns></returns>
-		public static double CalcTriangleSquare(double a, double b, double c)
+		public static double CalcRightTriangleSquare(double a, double b, double c)
 		{
-			if (!IsValidTriangle(a, b, c))
-				throw new InvalidTriangleException(a, b, c);
+			List<double> sides = new List<double> { a, b, c };
+			sides.Sort();
 
-			double p = (a + b + c) / 2;
+			if (!IsTriangle(sides) || !IsRightTriangle(sides))
+				throw new InvalidRightTriangleException(a, b, c);
 
-			return Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+			return 0.5*sides[0]*sides[1];
 		}
 
-		private static bool IsValidTriangle(double a, double b, double c)
+		private static bool IsTriangle(List<double> sides)
 		{
-			return a + b > c && a + c > b && b + c > a;
+			return sides[0] + sides[1] > sides[2] && 
+				sides[0] + sides[2] > sides[1] && 
+				sides[1] + sides[2] > sides[0];
+		}
+
+		private static bool IsRightTriangle(List<double> orderedSides)
+		{
+			return orderedSides[0]*orderedSides[0] + orderedSides[1]*orderedSides[1] ==
+				orderedSides[2]*orderedSides[2];
 		}
 	}    
 }
