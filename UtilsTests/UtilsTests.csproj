@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TriangleUtils\TriangleUtils.csproj">
+    <ProjectReference Include="..\TriangleUtils\TriangleUtils.csproj">
       <Project>{6b5fabba-b101-4ab6-a319-abc95cc42fe1}</Project>
       <Name>TriangleUtils</Name>
     </ProjectReference>
